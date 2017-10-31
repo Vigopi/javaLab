@@ -1,0 +1,55 @@
+importjava.util.*;
+importjava.io.*;
+PUBLICclassMyCopyApp1
+{
+	publicstaticVOIDmain(String[]args)throwsFileNotFoundException
+	{
+		Scannerscan=newScanner(System.in);
+		System.out.println("Entersourcefilename:");
+		Stringsource=scan.next();
+		System.out.println("Enterdestinationfilename:");
+		Stringdestination=scan.next();
+		try
+		{
+			FilesourceFile=newFile(source);
+			ScannerfileScan=newScanner(sourceFile);
+			FiledestinationFile=newFile(destination);
+			PrintWriterfileWrite=newPrintWriter(destinationFile);
+			intlineCount=0;
+			while(fileScan.hasNext())
+			{
+				Stringword=newString();
+				Stringbuffer=fileScan.nextLine();
+				lineCount++;
+				StringTokenizerst=newStringTokenizer(buffer,"",true);
+				String[]str=buffer.split("");
+				//while(st.hasMoreTokens())
+				System.out.print("Linecount:"+lineCount+"\t");
+				for(intj=0;j<str.length;j++)
+				{
+					//word=st.nextToken();
+					word=str[j];
+					for(inti=0;i<args.length;i++)
+					{
+						if(word.equals(args[i]))
+						{
+							System.out.print(word+"\t"+args[i]+"\n");
+							word=word.toUpperCase();
+							break;
+						}
+					}
+					fileWrite.write(word);
+				}
+				fileWrite.write("\n");
+			}
+			fileWrite.close();
+			scan.close();
+			fileScan.close();
+			System.out.println("fileiscopied");
+		}
+		catch(FileNotFoundExceptione)
+		{
+			System.out.println("Exceptionoccured");
+		}
+	}
+}

@@ -1,0 +1,9 @@
+public interface IStackADT
+{
+	int MAX_SIZE=10;
+	void push(int a);
+	void pop();
+	boolean isFull();
+	boolean isEmpty();
+	int top();
+}
